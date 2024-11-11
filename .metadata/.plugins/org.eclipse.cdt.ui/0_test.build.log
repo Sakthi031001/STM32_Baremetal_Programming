@@ -1,0 +1,17 @@
+14:15:23 **** Incremental Build of configuration Debug for project 0_test ****
+make -j4 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F446RETx -DSTM32F446xx -c -I../Inc -I"D:/sakthivel/udemy/Advanced Embedded Systems Bare-Metal Programming/STM32_bare_metal/0_test/stm_chip_headers/CMSIS/Device/ST/STM32F4xx/Include/" -I"D:/sakthivel/udemy/Advanced Embedded Systems Bare-Metal Programming/STM32_bare_metal/0_test/stm_chip_headers/CMSIS/Include" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
+arm-none-eabi-gcc -o "0_test.elf" @"objects.list"   -mcpu=cortex-m4 -T"D:\sakthivel\udemy\Advanced Embedded Systems Bare-Metal Programming\STM32_bare_metal\0_test\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="0_test.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: 0_test.elf
+ 
+arm-none-eabi-size  0_test.elf 
+arm-none-eabi-objdump -h -S 0_test.elf  > "0_test.list"
+   text	   data	    bss	    dec	    hex	filename
+    792	      0	   1568	   2360	    938	0_test.elf
+Finished building: default.size.stdout
+ 
+Finished building: 0_test.list
+ 
+
+14:15:24 Build Finished. 0 errors, 0 warnings. (took 657ms)
+

@@ -1,0 +1,12 @@
+#ifndef __DMA_H__
+#define __DMA_H__
+
+#include "stm32f446xx.h"
+
+#define LISR_TCIF0 		(1U<<5)
+#define LISR_CTCIF0		(1U<<5)
+
+void dma2_mem_mem_config();
+void dma_transfer_start(uint32_t src_buff, uint32t dest_buff, uint32_t len);
+
+#endif

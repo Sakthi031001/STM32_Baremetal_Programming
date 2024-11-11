@@ -1,0 +1,5 @@
+D:/sakthivel/udemy/Advanced Embedded Systems Bare-Metal Programming/STM32_bare_metal/4_Instrumentation_Trace_Microcell_logs/stm_chip_headers/CMSIS/Include/core_cm4.h:2064:26:ITM_SendChar	16	static,ignoring_inline_asm
+../Src/swo.c:5:5:__io_putchar	16	static
+../Src/swo.c:12:6:log_error	16	static
+../Src/swo.c:19:6:log_info	16	static
+../Src/swo.c:26:6:log_debug	16	static

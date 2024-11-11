@@ -1,0 +1,10 @@
+12:01:45 **** Incremental Build of configuration Debug for project 4_Instrumentation_Trace_Microcell_printf ****
+make -j4 all 
+arm-none-eabi-size  4_Instrumentation_Trace_Microcell_printf.elf 
+   text	   data	    bss	    dec	    hex	filename
+   4996	     92	   1900	   6988	   1b4c	4_Instrumentation_Trace_Microcell_printf.elf
+Finished building: default.size.stdout
+ 
+
+12:01:45 Build Finished. 0 errors, 0 warnings. (took 227ms)
+

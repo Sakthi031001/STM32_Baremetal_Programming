@@ -1,0 +1,10 @@
+16:16:20 **** Incremental Build of configuration Debug for project 7_Direct_Memory_Access_mem_mem ****
+make -j4 all 
+arm-none-eabi-size  7_Direct_Memory_Access_mem_mem.elf 
+   text	   data	    bss	    dec	    hex	filename
+   5704	    104	   1912	   7720	   1e28	7_Direct_Memory_Access_mem_mem.elf
+Finished building: default.size.stdout
+ 
+
+16:16:20 Build Finished. 0 errors, 0 warnings. (took 214ms)
+

@@ -1,0 +1,18 @@
+#include "stm32f446xx.h"
+#include <stdio.h>
+#include "adc_dma.h"
+#include "uart.h"
+#include "dma.h"
+
+extern uint16_t adc_raw_data[NUM_OF_CHANNELS];
+
+int main()
+{
+	uart2_tx_init();
+	adc_dma_init();
+
+	while(1)
+	{
+
+	}
+}

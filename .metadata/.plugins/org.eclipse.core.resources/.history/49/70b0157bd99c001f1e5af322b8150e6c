@@ -1,0 +1,39 @@
+#include "dma.h"
+
+#define DMA2EN			(1U<<22)
+#define DMA_SCR_EN		(1U<<0)
+#define DMA_SCR_MINC	(1U<<10)
+#define DMA_SCR_PINC	(1U<<9)
+
+void dma2_mem_mem_config()
+{
+	// Enable clock access to DMA module
+	RCC->AHB1ENR |= DMA2EN;
+
+	// Disable DMA stream
+	DMA2_Stream0->CR = 0;
+
+	// Wait until the stream is disabled
+	while((DMA2_Stream0->CR & DMA_SCR_EN)){}
+
+	// Configure DMA parameters
+	// Set Memory Data size (MSIZE) to half-word
+	DMA2_Stream0->CR |=  (1U<<13);
+	DMA2_Stream0->CR &= ~(1U<<14);
+
+	// Set Peripheral Data Size (PSIZE) to half-word
+	DMA2_Stream0->CR |=	 (1U<<11);
+	DMA2_Stream0->CR &= ~(1U<<12);
+
+	//Enable Memory increment
+	DMA2_Stream0->CR |= DMA_SCR_MINC;
+
+	//Enable Peripheral increment
+	DMA2_Stream0->CR |= DMA_SCR_PINC;
+
+	// Disable direct mode
+
+	// Set DMA FIFI Threshold
+
+	// Enable DMA interrupt in NVIC
+}

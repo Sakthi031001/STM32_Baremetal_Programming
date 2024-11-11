@@ -1,0 +1,7 @@
+#ifndef __ADC_DMA_H__
+#define __ADC_DMA_H__
+
+#include "stm32f446xx.h"
+#include <stdint.h>
+
+#endif

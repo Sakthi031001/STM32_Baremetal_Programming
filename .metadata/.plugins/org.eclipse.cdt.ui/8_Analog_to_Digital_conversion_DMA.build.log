@@ -1,0 +1,10 @@
+18:14:24 **** Incremental Build of configuration Debug for project 8_Analog_to_Digital_conversion_DMA ****
+make -j4 all 
+arm-none-eabi-size  8_Analog_to_Digital_conversion_DMA.elf 
+   text	   data	    bss	    dec	    hex	filename
+   5608	     92	   1908	   7608	   1db8	8_Analog_to_Digital_conversion_DMA.elf
+Finished building: default.size.stdout
+ 
+
+18:14:24 Build Finished. 0 errors, 0 warnings. (took 220ms)
+

@@ -1,0 +1,38 @@
+#include "adc_dma.h"
+
+#define GPIOAEN			(1U<<0)
+
+void adc_dma_init(void)
+{
+	/******************************************************* GPIO CONFIGURATION *******************************************************/
+	// Enable Clock access to the ADC GPIO pin's port
+
+	// Set PA0 and PA1 mode to analog mode
+
+	/******************************************************* ADC CONFIGURATION *******************************************************/
+	// Enable Clock access to the ADC
+	// Set sequence length
+	// Set sequence
+	// Enable scan mode
+	// Select to use DMA
+
+	/******************************************************* DMA CONFIGURATION *******************************************************/
+	// Enable clock access to DMA
+	// Disable DMA
+	// Wait till DMA is disabled
+	// Enable Circular mode
+	// Set transfer size
+	// Enable memory increment
+	// Set Memory transfer size
+	// Set Peripheral transfer size
+
+	// Enable Memory increment
+	// Set peripheral address
+	// Set Memory address
+	// Set number of transfer
+	// Enable DMA Stream
+
+	/******************************************************* ADC CONFIGURATION *******************************************************/
+	// Enable ADC
+	// Start ADC
+}

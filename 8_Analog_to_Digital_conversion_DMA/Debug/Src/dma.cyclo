@@ -1,0 +1,3 @@
+D:/sakthivel/udemy/Advanced Embedded Systems Bare-Metal Programming/STM32_bare_metal_practice/8_Analog_to_Digital_conversion_DMA/stm_chip_headers/CMSIS/Include/core_cm4.h:1684:22:__NVIC_EnableIRQ	2
+../Src/dma.c:11:6:dma2_mem_mem_config	2
+../Src/dma.c:58:6:dma_transfer_start	1
