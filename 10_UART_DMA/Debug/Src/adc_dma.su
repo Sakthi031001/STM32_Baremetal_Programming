@@ -1,0 +1,3 @@
+D:/sakthivel/udemy/Advanced Embedded Systems Bare-Metal Programming/STM32_bare_metal_practice/10_UART_DMA/stm_chip_headers/CMSIS/Include/core_cm4.h:1684:22:__NVIC_EnableIRQ	16	static,ignoring_inline_asm
+../Src/adc_dma.c:27:6:adc_tim_dma_init	8	static
+../Src/adc_dma.c:135:6:adc_dma_init	4	static
