@@ -25,12 +25,12 @@ int main()
 	{
 		if(g_rx_complete)
 		{
-			printf(msg_buff, "Message Received : %s \n\r", uart_data_buffer);
+			sprintf(msg_buff, "Message Received : %s \n\r", uart_data_buffer);
 			g_rx_complete = 0;
 			g_uart_complete = 0;
 			dma1_stream6_uart_tx_config((uint32_t)msg_buff,strlen(msg_buff));
 
-			while(!g_uart_complete){}
+			while(!g_tx_cmplt){}
 			
 		}
 	}
