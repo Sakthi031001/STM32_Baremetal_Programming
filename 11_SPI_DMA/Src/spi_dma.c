@@ -31,8 +31,19 @@
 #define HIFCR_CTEIF6	(1U<<19)
 #define HIFCR_CTCIF6	(1U<<21)
 
-#define HIFSR_TCIF5	(1U<<11)
-#define HIFSR_TCIF6	(1U<<21)
+#define HISR_TCIF5	    (1U<<11)
+#define HISR_TCIF6	    (1U<<21)
+
+// #define LIFCR_CDMEIF3	(1U<<24)
+#define LIFCR_CTEIF3	(1U<<25)
+#define LIFCR_CTCIF3	(1U<<27)
+
+// #define LIFCR_CDMEIF2	(1U<<18)
+#define LIFCR_CTEIF2	(1U<<19)
+#define LIFCR_CTCIF2	(1U<<21)
+
+#define LISR_TCIF3	    (1U<<27)
+#define LISR_TCIF2	    (1U<<21)
 
 void spi1_dma_init(void)
 {
@@ -98,26 +109,107 @@ void dma2_stream3_spi_tx_init(void)
 	// Enable clock access to DMA
     RCC->AHB1ENR |= DMA2EN;
 
-    // Disable DMA
+    // Disable DMA Stream
     DMA2_Stream3->CR = 0;
 
-    // Wait till DMA is disabled
+    // Wait till DMA Stream is disabled
     while((DMA2_Stream3->CR & DMA_SCR_EN)){}
 
     /******************************************************* Configure DMA Stram parameters *******************************************************/
     // Enable memory address increment
     DMA2_Stream3->CR |= DMA_SCR_MINC;
 
-    // Set transfer direction : memory to peripheral
-    DMA2_Stream3->CR &= ~(1U<<7);
+    // Set transfer direction : memory to peripheral -> 1   0
+    DMA2_Stream3->CR &= (~(1U<<7));
 	DMA2_Stream3->CR |=  (1U<<6);
 
     // Enable transfer complete interrupt
     DMA2_Stream3->CR |= DMA_SCR_TCIE;
 
     // Enable transfer Error interrupt
+    DMA2_Stream3->CR |= DMA_SCR_TEIE;
+
+    // Disable direct mode
+	DMA2_Stream3->FCR |= DMA_SFCR_DMDIS;
 
     // Set DMA FIFO threshold
+    DMA2_Stream3->FCR |= (1U<<0);
+	DMA2_Stream3->FCR |= (1U<<1);
 
     // Enable DMA interrupt in NVIC
+    NVIC_EnableIRQ(DMA2_Stream3_IRQn);
+}
+
+
+void dma2_stream2_spi_tx_init(void)
+{
+    /******************************************************* DMA CONFIGURATION *******************************************************/
+	// Enable clock access to DMA
+    RCC->AHB1ENR |= DMA2EN;
+
+    // Disable DMA Stream
+    DMA2_Stream2->CR = 0;
+
+    // Wait till DMA Stream is disabled
+    while((DMA2_Stream2->CR & DMA_SCR_EN)){}
+
+    /******************************************************* Configure DMA Stram parameters *******************************************************/
+    // Enable memory address increment
+    DMA2_Stream2->CR |= DMA_SCR_MINC;
+
+    // Set transfer direction : Peripheral to memory -> 0   0
+    DMA2_Stream2->CR &= (~(1U<<7)) & (~(1U<<6));
+
+    // Enable transfer complete interrupt
+    DMA2_Stream2->CR |= DMA_SCR_TCIE;
+
+    // Enable transfer Error interrupt
+    DMA2_Stream2->CR |= DMA_SCR_TEIE;
+
+    // Disable direct mode
+    DMA2_Stream2->FCR |= DMA_SFCR_DMDIS;
+
+    // Set DMA FIFO threshold
+    DMA2_Stream2->FCR |= (1U<<0);
+	DMA2_Stream2->FCR |= (1U<<1);
+
+    // Enable DMA interrupt in NVIC
+    NVIC_EnableIRQ(DMA2_Stream2_IRQn);
+
+}
+
+void dma2_stream3_spi_transfer(uint32_t msg_to_send, uint32_t msg_len)
+{
+    // Clear Interrupt flags
+    DMA2->LIFCR |= LIFCR_CTEIF3 | LIFCR_CTCIF3;
+
+    // Set peripheral address
+    DMA2_Stream3->PAR = (uint32_t)(&(SPI1->DR));
+
+    // Set Memory address
+    DMA2_Stream3->M0AR = msg_to_send;
+
+    // Set Transfer length
+    DMA2_Stream3->NDTR  = msg_len;
+
+    // Enable DMA Stream
+    DMA2_Stream3->CR |= DMA_SCR_EN;
+}
+
+void dma2_stream2_spi_receive(uint32_t received_msg, uint32_t msg_len)
+{
+    // Clear Interrupt flags
+    DMA2->LIFCR |= LIFCR_CTEIF2 | LIFCR_CTCIF2;
+
+    // Set peripheral address
+    DMA2_Stream2->PAR = (uint32_t)(&(SPI1->DR));
+
+    // Set Memory address
+    DMA2_Stream2->M0AR = received_msg;
+
+    // Set Transfer length
+    DMA2_Stream2->NDTR  = msg_len;
+
+    // Enable DMA Stream
+    DMA2_Stream2->CR |= DMA_SCR_EN;
 }
