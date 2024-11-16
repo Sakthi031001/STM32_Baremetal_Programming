@@ -141,7 +141,7 @@ void dma2_stream3_spi_tx_init(void)
 }
 
 
-void dma2_stream2_spi_tx_init(void)
+void dma2_stream2_spi_rx_init(void)
 {
     /******************************************************* DMA CONFIGURATION *******************************************************/
 	// Enable clock access to DMA
