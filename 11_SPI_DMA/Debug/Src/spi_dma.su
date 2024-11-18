@@ -1,0 +1,6 @@
+D:/sakthivel/udemy/Advanced Embedded Systems Bare-Metal Programming/STM32_bare_metal_practice/11_SPI_DMA/stm_chip_headers/CMSIS/Include/core_cm4.h:1684:22:__NVIC_EnableIRQ	16	static,ignoring_inline_asm
+../Src/spi_dma.c:48:6:spi1_dma_init	4	static
+../Src/spi_dma.c:106:6:dma2_stream3_spi_tx_init	8	static
+../Src/spi_dma.c:144:6:dma2_stream2_spi_rx_init	8	static
+../Src/spi_dma.c:181:6:dma2_stream3_spi_transfer	16	static
+../Src/spi_dma.c:199:6:dma2_stream2_spi_receive	16	static
